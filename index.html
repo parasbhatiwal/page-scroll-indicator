@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+</head>
+<body id="body">
+    <div id="scrollindicator"></div>
+    <div><h1 id="per">Page Scrolled 0%</h1></div>
+    <main>
+        <section class="home">Home</section>
+        <section class="about">About</section>
+        <section class="service">Service</section>
+        <section class="contact">Contact</section>
+        <section class="home">Home</section>
+        <section class="about"><h1 id="about">About</h1></section>
+        <section class="service">Service</section>
+        <section class="contact">Contact</section>
+    </main>
+    <div ><i id="top" onclick="gototop()" class='fas fa-arrow-circle-up'></i></div>
+
+    <script>
+
+      const scrollIndicator = document.getElementById("scrollindicator")
+
+      window.addEventListener("scroll",()=>{
+
+      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+      const currentScrolled = window.scrollY;
+
+      const scrollIndicatorWidth = Math.ceil(currentScrolled / scrollableHeight * 100);
+
+     scrollIndicator.style.width = `${scrollIndicatorWidth}%`;
+
+     let per = document.getElementById("per")
+     per.textContent = "Page Scrolled "+ `${scrollIndicatorWidth}%`
+
+     if (scrollIndicatorWidth===50) {
+         window.alert('You have scrolled 50% of this page!')
+     }
+     if (scrollIndicatorWidth===12) {
+         document.getElementById("about").style.fontSize=('100px')
+     }
+
+    })
+    
+
+    function gototop(){
+        document.documentElement.scrollTop=0;
+    }
+
+    window.onload= function (){
+        document.documentElement.scrollTop=0;
+
+    }
+
+
+    </script>
+</body>
+</html>
